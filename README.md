@@ -8,9 +8,10 @@ import github.com/derekdowling/goji2-logger
 
 // works with Logrus, stdlogger, most others as well
 logger := New(os.Stderr, "", LstdFlags)
+gojilogger.SetLogger(logger)
 
 mux := goji.NewMux()
-mux.UseC(gojilogger.With(logger))
+mux.UseC(gojilogger.Middleware)
 ```
 
 Output looks like:
