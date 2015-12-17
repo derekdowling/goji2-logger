@@ -1,6 +1,6 @@
 # goji2-logger
 
-Logging Middleware For Goji v2
+Logging Middleware For [Goji 2](http://goji.io)
 
 ```go
 
