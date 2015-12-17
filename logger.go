@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"goji.io"
+	"github.com/goji/goji"
 
 	"github.com/zenazn/goji/web/mutil"
 )
