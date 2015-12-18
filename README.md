@@ -1,6 +1,6 @@
 # goji2-logger
 
-[![GoDoc](https://godoc.org/github.com/derekdowling/goji2-logger?status.png)](https://godoc.org/github.com/derekdowling/go-json-spec-handler)
+[![GoDoc](https://godoc.org/github.com/derekdowling/goji2-logger?status.png)](https://godoc.org/github.com/derekdowling/goji2-logger)
 
 Logging Middleware For [Goji 2](http://goji.io)
 
