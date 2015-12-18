@@ -11,6 +11,7 @@ import (
 
 	"golang.org/x/net/context"
 
+	"github.com/derekdowling/go-stdlogger"
 	"github.com/zenazn/goji/web/mutil"
 )
 
@@ -21,30 +22,11 @@ const (
 	AcceptableResponse = 5 * time.Second
 )
 
-// Logger describes a logger interface that is compatible with the standard
-// log.Logger but also logrus and others. As not to limit which loggers can and
-// can't be used with the API.
-//
-// This interface is from https://godoc.org/github.com/Sirupsen/logrus#StdLogger
-type Logger interface {
-	Print(...interface{})
-	Printf(string, ...interface{})
-	Println(...interface{})
-
-	Fatal(...interface{})
-	Fatalf(string, ...interface{})
-	Fatalln(...interface{})
-
-	Panic(...interface{})
-	Panicf(string, ...interface{})
-	Panicln(...interface{})
-}
-
-var std Logger = log.New(os.Stderr, "", log.LstdFlags)
+var logger std.Logger = log.New(os.Stderr, "", log.LstdFlags)
 
 // SetLogger allows you to use your own logging solution
-func SetLogger(logger Logger) {
-	std = logger
+func SetLogger(newLogger std.Logger) {
+	logger = newLogger
 }
 
 // Middleware logs the start and end of each request, along
