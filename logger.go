@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"time"
 
@@ -79,8 +80,16 @@ func printRequest(ctx context.Context, r *http.Request) {
 	// Request details
 	buf.WriteString("for ")
 	colorWrite(&buf, bMagenta, "%s ", r.Method)
-	colorWrite(&buf, bBlue, "%q", r.URL.String())
 
+	// remove Query params from logging as not to include any sensitive information
+	// inadvertantly into user's logs
+	pURL := &url.URL{}
+	*pURL = *r.URL
+	if pURL.RawQuery != "" {
+		pURL.RawQuery = "<omitted>"
+	}
+
+	colorWrite(&buf, bBlue, "%q", pURL.String())
 	log.Print(buf.String())
 }
 
